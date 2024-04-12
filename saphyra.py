@@ -3470,18 +3470,17 @@ def httpcall(url):
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
-			urllib2.urlopen(request)
+		urllib2.urlopen(request)
 	except urllib2.HTTPError as e:
-			#print e.code
-			set_flag(1)
-			print ("----->>> ! We are Anonymous - ExpectUS ! <<<-----")
-			code=500
+		print (e.reason)
+		set_flag(1)
+		code=500
 	except urllib2.URLError as e:
-			#print e.reason
-			sys.exit()
+		print (e.reason)
+		sys.exit()
 	else:
-			inc_counter()
-			urllib2.urlopen(request)
+		inc_counter()
+		urllib2.urlopen(request)
 	return(code)		
 
 	
